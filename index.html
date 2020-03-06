@@ -114,12 +114,12 @@
         let confUrl = conf.value ? conf.value : conf.placeholder;
         let topUrl = top.value ? top.value : top.placeholder;
         
-        url.href = `https://sulcgroup.github.io/oxdna-viewer/?configuration=${confUrl}&topology=${topUrl}`;
+        url.href = `https://sulcgroup.github.io/oxdna-viewer/?configuration=${encodeURIComponent(confUrl)}&topology=${encodeURIComponent(topUrl)}`;
         url.innerHTML = url.href;
         
         let shareButtons = document.getElementsByClassName("resp-sharing-button__link");
         for (let i=0; i<shareButtons.length; i++) {
-            shareButtons[i].href = shareButtons[i].href.replace("[url]", url.href);
+            shareButtons[i].href = shareButtons[i].href.replace("[url]", encodeURIComponent(url.href));
             shareButtons[i].style.display = "";
         };
     }
