@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>oxvurl</title>
+  </head>
+  <body>
+    <div style="margin-top: 20px;" class="container">
+    <h2>oxvurl</h2> <small class="form-text text-muted"> A oxView utility by Joakim Bohlin </small><br>
+    <p>Create oxView url from paths to github topology and configuration files. Make sure to get the "raw" file url from github</p>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label for="conf">Configuration (.conf, .dat or .oxdna):</label>
+            <input type="text" class="form-control" id="conf" placeholder="https://raw.githubusercontent.com/lorenzo-rovigatti/oxDNA/master/EXAMPLES/RELAX_INITIAL_CONFIGURATION/prova.conf">
+            <label for="top">Topology (.top):</label>
+            <input type="text" class="form-control" id="top" placeholder="https://raw.githubusercontent.com/lorenzo-rovigatti/oxDNA/master/EXAMPLES/RELAX_INITIAL_CONFIGURATION/prova.top">
+        </div>
+        <button type="button" class="btn btn-primary" onClick="buildUrl()">Get url</button><br><br>
+        <a style="display:none" id="url" href="url">link text</a>
+    </div>
+    
+    <script>
+    function buildUrl() {
+        let url = document.getElementById("url");
+        url.style.display = "";
+        
+        let conf = document.getElementById("conf");
+        let top = document.getElementById("top");
+        
+        let confUrl = conf.value ? conf.value : conf.placeholder;
+        let topUrl = top.value ? top.value : top.placeholder;
+        
+        url.href = `https://sulcgroup.github.io/oxdna-viewer/?configuration=${confUrl}&topology=${topUrl}`;
+        url.innerHTML = url.href;
+    }
+    </script> 
+  </body>
+</html>
